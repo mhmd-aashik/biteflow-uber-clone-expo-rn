@@ -7,11 +7,12 @@ import { BrowseResults } from "../../components/browse/BrowseResults";
 
 export default function SearchScreen() {
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <Screen>
       <BrowseHeader />
-      <BrowseSearch />
+      <BrowseSearch value={searchQuery} onChangeText={setSearchQuery} />
       <BrowseCategoryFilter
         selectedCategory={selectedCategory}
         onSelectCategory={setSelectedCategory}
