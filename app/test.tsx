@@ -2,16 +2,14 @@ import { router } from "expo-router";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function HomeScreen() {
+export default function TestScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.title}>biteflow</Text>
+        <Text style={styles.title}>Test Screen</Text>
 
-        <Text style={styles.subtitle}>Food delivery, rebuilt properly.</Text>
-
-        <Pressable onPress={() => router.push("/test")} style={styles.button}>
-          <Text style={styles.buttonText}>Test Navigation</Text>
+        <Pressable onPress={() => router.back()} style={styles.button}>
+          <Text style={styles.buttonText}>Go Back</Text>
         </Pressable>
       </View>
     </SafeAreaView>
@@ -28,18 +26,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    paddingHorizontal: 20,
   },
 
   title: {
-    fontSize: 32,
+    fontSize: 28,
     fontWeight: "700",
     color: "#171717",
-  },
-
-  subtitle: {
-    marginTop: 8,
-    fontSize: 15,
-    color: "#777777",
   },
 
   button: {
