@@ -20,6 +20,8 @@ export default function CheckoutScreen() {
     0,
   );
 
+  const clearCart = useCartStore((state) => state.clearCart);
+
   return (
     <Screen>
       <CheckoutHeader />
@@ -40,13 +42,8 @@ export default function CheckoutScreen() {
         <PlaceOrderButton
           total={totalPrice}
           onPress={() => {
-            console.log("Place order", {
-              items,
-              deliveryInstructions,
-              totalPrice,
-            });
-
-            router.push('/order-success')
+            clearCart();
+            router.replace("/order-success");
           }}
         />
       </ScrollView>
