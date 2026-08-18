@@ -4,9 +4,19 @@ import { DeliveryAddressCard } from "../components/checkout/DeliveryAddressCard"
 import { Screen } from "../components/ui/Screen";
 import { DeliveryInstructions } from "../components/checkout/DeliveryInstructions";
 import { PaymentMethodCard } from "../components/checkout/PaymentMethodCard";
+import { useCartStore } from "../store/cart.store";
+import { CheckoutOrderSummary } from "../components/checkout/CheckoutOrderSummary";
 
 export default function CheckoutScreen() {
   const [deliveryInstructions, setDeliveryInstructions] = useState("");
+
+  const items = useCartStore((state) => state.items);
+
+  const totalPrice = items.reduce(
+    (total, item) => total + item.product.price * item.quantity,
+    0,
+  );
+
   return (
     <Screen>
       <CheckoutHeader />
@@ -16,6 +26,8 @@ export default function CheckoutScreen() {
         onChangeText={setDeliveryInstructions}
       />
       <PaymentMethodCard />
+
+      <CheckoutOrderSummary items={items} total={totalPrice} />
     </Screen>
   );
 }
