@@ -22,7 +22,10 @@ export default function SearchScreen() {
           selectedCategory={selectedCategory}
           onSelectCategory={setSelectedCategory}
         />
-        <BrowseResults selectedCategory={selectedCategory} />
+        <BrowseResults
+          selectedCategory={selectedCategory}
+          searchQuery={searchQuery}
+        />
       </ScrollView>
     </Screen>
   );
