@@ -6,6 +6,7 @@ import { FoodHero } from "../../components/food/FoodHero";
 import { FoodInfo } from "../../components/food/FoodInfo";
 import { useState } from "react";
 import { QuantitySelector } from "../../components/food/QuantitySelector";
+import { AddToCartButton } from "../../components/food/AddToCartButton";
 
 export default function FoodDetailsScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -26,16 +27,30 @@ export default function FoodDetailsScreen() {
     );
   }
 
+  const totalPrice = product.price * quantity;
+
   return (
     <Screen>
       <FoodHero product={product} />
+
       <FoodInfo product={product} />
 
-      <View className="mt-8 px-5">
+      <View className="mt-8 flex-row items-center gap-4 px-5">
         <QuantitySelector
           quantity={quantity}
           onIncrease={() => setQuantity((current) => current + 1)}
           onDecrease={() => setQuantity((current) => Math.max(1, current - 1))}
+        />
+
+        <AddToCartButton
+          totalPrice={totalPrice}
+          onPress={() => {
+            console.log("Add to cart", {
+              product,
+              quantity,
+              totalPrice,
+            });
+          }}
         />
       </View>
     </Screen>
