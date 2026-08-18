@@ -15,14 +15,27 @@ export default function TabsLayout() {
         tabBarInactiveTintColor: "#9A9A9A",
 
         tabBarStyle: {
-          height: 70,
-          paddingTop: 6,
+          height: 72,
+          paddingTop: 8,
           paddingBottom: 8,
+          borderTopWidth: 0,
+          elevation: 0,
         },
 
         tabBarLabelStyle: {
           fontSize: 12,
           fontWeight: "600",
+        },
+
+        tabBarItemStyle: {
+          paddingVertical: 2,
+        },
+
+        tabBarBadgeStyle: {
+          backgroundColor: "#FF5A36",
+          color: "#FFFFFF",
+          fontSize: 10,
+          fontWeight: "700",
         },
       }}
     >
