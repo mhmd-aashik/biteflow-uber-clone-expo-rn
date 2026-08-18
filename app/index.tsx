@@ -1,60 +1,24 @@
-import { router } from "expo-router";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomeScreen() {
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.content}>
-        <Text style={styles.title}>biteflow</Text>
+    <SafeAreaView className="flex-1 bg-[#F8F9F6]">
+      <View className="flex-1 items-center justify-center px-5">
+        <Text className="text-4xl font-bold text-text-primary">
+          BiteFlow
+        </Text>
 
-        <Text style={styles.subtitle}>Food delivery, rebuilt properly.</Text>
+        <Text className="mt-2 text-base text-gray-500">
+          Food delivery, rebuilt properly.
+        </Text>
 
-        <Pressable onPress={() => router.push("/test")} style={styles.button}>
-          <Text style={styles.buttonText}>Test Navigation</Text>
-        </Pressable>
+        <View className="mt-6 rounded-2xl bg-orange-500 px-6 py-4">
+          <Text className="font-bold text-white">
+            NativeWind is working 🔥
+          </Text>
+        </View>
       </View>
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#F8F9F6",
-  },
-
-  content: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  title: {
-    fontSize: 32,
-    fontWeight: "700",
-    color: "#171717",
-  },
-
-  subtitle: {
-    marginTop: 8,
-    fontSize: 15,
-    color: "#777777",
-  },
-
-  button: {
-    marginTop: 24,
-    paddingHorizontal: 20,
-    height: 50,
-    borderRadius: 16,
-    backgroundColor: "#FF5A36",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  buttonText: {
-    color: "#FFFFFF",
-    fontSize: 16,
-    fontWeight: "700",
-  },
-});
