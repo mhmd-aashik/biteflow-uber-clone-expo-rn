@@ -1,0 +1,68 @@
+import { Product } from "../types/product";
+
+export const products: Product[] = [
+  {
+    id: 1,
+    restaurantId: 1,
+    name: "Classic Beef Burger",
+    description: "Beef patty, cheddar, lettuce and house sauce",
+    price: 32,
+    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
+  },
+  {
+    id: 2,
+    restaurantId: 1,
+    name: "Double Cheese Burger",
+    description: "Double beef patties, cheddar and special sauce",
+    price: 42,
+    image: "https://images.unsplash.com/photo-1550547660-d9450f859349",
+  },
+  {
+    id: 3,
+    restaurantId: 2,
+    name: "Margherita Pizza",
+    description: "Tomato sauce, mozzarella and fresh basil",
+    price: 35,
+    image: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002",
+  },
+  {
+    id: 4,
+    restaurantId: 2,
+    name: "Pepperoni Pizza",
+    description: "Pepperoni, mozzarella and tomato sauce",
+    price: 42,
+    image: "https://images.unsplash.com/photo-1628840042765-356cda07504e",
+  },
+  {
+    id: 5,
+    restaurantId: 3,
+    name: "Salmon Sushi Roll",
+    description: "Fresh salmon, avocado and seasoned sushi rice",
+    price: 38,
+    image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c",
+  },
+  {
+    id: 6,
+    restaurantId: 3,
+    name: "California Roll",
+    description: "Crab, avocado and cucumber",
+    price: 34,
+    image: "https://images.unsplash.com/photo-1553621042-f6e147245754",
+  },
+  {
+    id: 7,
+    restaurantId: 4,
+    name: "Chicken Avocado Bowl",
+    description: "Grilled chicken, avocado and fresh vegetables",
+    price: 36,
+    image: "https://images.unsplash.com/photo-1540420773420-3366772f4999",
+  },
+  {
+    id: 8,
+    restaurantId: 4,
+    name: "Greek Salad",
+    description: "Tomato, cucumber, olives, feta and fresh greens",
+    price: 28,
+    image: "https://images.unsplash.com/photo-1546793665-c74683f339c1",
+  },
+];
