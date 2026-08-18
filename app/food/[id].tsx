@@ -1,4 +1,4 @@
-import { useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import { Text, View } from "react-native";
 import { Screen } from "../../components/ui/Screen";
 import { products } from "../../data/products";
@@ -49,6 +49,7 @@ export default function FoodDetailsScreen() {
           totalPrice={totalPrice}
           onPress={() => {
             addItem(product, quantity);
+            router.push("/cart");
           }}
         />
       </View>
