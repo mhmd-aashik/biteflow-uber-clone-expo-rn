@@ -6,6 +6,7 @@ type CartStore = {
   items: CartItem[];
   addItem: (product: Product, quantity: number) => void;
   increaseQuantity: (productId: number) => void;
+  decreaseQuantity: (productId: number) => void;
 };
 
 export const useCartStore = create<CartStore>((set) => ({
@@ -47,6 +48,18 @@ export const useCartStore = create<CartStore>((set) => ({
           ? {
               ...item,
               quantity: item.quantity + 1,
+            }
+          : item,
+      ),
+    })),
+
+  decreaseQuantity: (productId) =>
+    set((state) => ({
+      items: state.items.map((item) =>
+        item.product.id === productId
+          ? {
+              ...item,
+              quantity: Math.max(1, item.quantity - 1),
             }
           : item,
       ),
