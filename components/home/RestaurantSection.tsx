@@ -7,9 +7,12 @@ type Props = {
 };
 
 export function RestaurantSection({ selectedCategory }: Props) {
-  const filteredRestaurants = restaurants.filter(
-    (restaurant) => restaurant.categorySlug === selectedCategory,
-  );
+  const filteredRestaurants =
+    selectedCategory === "all"
+      ? restaurants
+      : restaurants.filter(
+          (restaurant) => restaurant.categorySlug === selectedCategory,
+        );
 
   return (
     <View className="mt-8 px-5">

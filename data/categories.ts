@@ -2,6 +2,12 @@ import { Category } from "../types/category";
 
 export const categories: Category[] = [
   {
+    id: 0,
+    name: "All",
+    emoji: "🍽️",
+    slug: "all",
+  },
+  {
     id: 1,
     name: "Burgers",
     emoji: "🍔",

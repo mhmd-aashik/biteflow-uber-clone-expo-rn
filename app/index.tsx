@@ -7,7 +7,7 @@ import { RestaurantSection } from "../components/home/RestaurantSection";
 import { useState } from "react";
 
 export default function HomeScreen() {
-  const [selectedCategory, setSelectedCategory] = useState("burgers");
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   return (
     <Screen>
