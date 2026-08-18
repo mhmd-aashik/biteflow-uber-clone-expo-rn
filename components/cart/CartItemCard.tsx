@@ -11,6 +11,7 @@ export function CartItemCard({ item }: Props) {
   const itemTotal = item.product.price * item.quantity;
   const increaseQuantity = useCartStore((state) => state.increaseQuantity);
   const decreaseQuantity = useCartStore((state) => state.decreaseQuantity);
+  const removeItem = useCartStore((state) => state.removeItem);
 
   return (
     <View className="flex-row gap-4 rounded-2xl bg-white p-4">
@@ -21,9 +22,21 @@ export function CartItemCard({ item }: Props) {
       />
 
       <View className="flex-1">
-        <Text className="text-lg font-bold text-text-primary" numberOfLines={1}>
-          {item.product.name}
-        </Text>
+        <View className="flex-row items-start justify-between gap-2">
+          <Text
+            className="flex-1 text-lg font-bold text-text-primary"
+            numberOfLines={1}
+          >
+            {item.product.name}
+          </Text>
+
+          <Pressable
+            onPress={() => removeItem(item.product.id)}
+            className="h-8 w-8 items-center justify-center rounded-full active:opacity-60"
+          >
+            <Ionicons name="trash-outline" size={18} color="#FF5A36" />
+          </Pressable>
+        </View>
 
         <View>
           <View className="mt-3 flex-row items-center gap-3">
