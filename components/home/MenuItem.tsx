@@ -1,5 +1,6 @@
 import { Image, Pressable, Text, View } from "react-native";
 import { Product } from "../../types/product";
+import { router } from "expo-router";
 
 type Props = {
   product: Product;
@@ -7,7 +8,17 @@ type Props = {
 
 export function MenuItem({ product }: Props) {
   return (
-    <Pressable className="flex-row gap-4 rounded-2xl bg-white p-4 active:opacity-90">
+    <Pressable
+      className="flex-row gap-4 rounded-2xl bg-white p-4 active:opacity-90"
+      onPress={() =>
+        router.push({
+          pathname: "/food/[id]",
+          params: {
+            id: product.id,
+          },
+        })
+      }
+    >
       <View className="flex-1">
         <Text className="text-lg font-bold text-text-primary" numberOfLines={1}>
           {product.name}
