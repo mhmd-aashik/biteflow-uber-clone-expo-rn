@@ -7,6 +7,7 @@ import { PaymentMethodCard } from "../components/checkout/PaymentMethodCard";
 import { useCartStore } from "../store/cart.store";
 import { CheckoutOrderSummary } from "../components/checkout/CheckoutOrderSummary";
 import { ScrollView } from "react-native";
+import { PlaceOrderButton } from "../components/checkout/PlaceOrderButton";
 
 export default function CheckoutScreen() {
   const [deliveryInstructions, setDeliveryInstructions] = useState("");
@@ -34,6 +35,17 @@ export default function CheckoutScreen() {
         <PaymentMethodCard />
 
         <CheckoutOrderSummary items={items} total={totalPrice} />
+
+        <PlaceOrderButton
+          total={totalPrice}
+          onPress={() => {
+            console.log("Place order", {
+              items,
+              deliveryInstructions,
+              totalPrice,
+            });
+          }}
+        />
       </ScrollView>
     </Screen>
   );
