@@ -5,6 +5,7 @@ import { CartItemCard } from "../../components/cart/CartItemCard";
 import { CartSummary } from "../../components/cart/CartSummary";
 import { CartEmptyState } from "../../components/cart/CartEmptyState";
 import { CheckoutButton } from "../../components/cart/CheckoutButton";
+import { router } from "expo-router";
 
 export default function CartScreen() {
   const items = useCartStore((state) => state.items);
@@ -48,9 +49,7 @@ export default function CartScreen() {
 
             <CheckoutButton
               total={totalPrice}
-              onPress={() => {
-                console.log("Go to checkout");
-              }}
+              onPress={() => router.push("/checkout")}
             />
           </View>
         </View>
