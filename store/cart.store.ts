@@ -5,6 +5,7 @@ import type { Product } from "../types/product";
 type CartStore = {
   items: CartItem[];
   addItem: (product: Product, quantity: number) => void;
+  increaseQuantity: (productId: number) => void;
 };
 
 export const useCartStore = create<CartStore>((set) => ({
@@ -38,4 +39,16 @@ export const useCartStore = create<CartStore>((set) => ({
         ],
       };
     }),
+
+  increaseQuantity: (productId) =>
+    set((state) => ({
+      items: state.items.map((item) =>
+        item.product.id === productId
+          ? {
+              ...item,
+              quantity: item.quantity + 1,
+            }
+          : item,
+      ),
+    })),
 }));
