@@ -1,6 +1,7 @@
 import { Text, View } from "react-native";
 import { RestaurantCard } from "./RestaurantCard";
 import { restaurants } from "../../data/restaurants";
+import { RestaurantEmptyState } from "./RestaurantEmptyState";
 
 type Props = {
   selectedCategory: string;
@@ -25,11 +26,15 @@ export function RestaurantSection({ selectedCategory, searchQuery }: Props) {
         Popular near you
       </Text>
 
-      <View className="mt-4 gap-4">
-        {filteredRestaurants.map((restaurant) => (
-          <RestaurantCard key={restaurant.id} restaurant={restaurant} />
-        ))}
-      </View>
+      {filteredRestaurants.length === 0 ? (
+        <RestaurantEmptyState />
+      ) : (
+        <View className="mt-4 gap-4">
+          {filteredRestaurants.map((restaurant) => (
+            <RestaurantCard key={restaurant.id} restaurant={restaurant} />
+          ))}
+        </View>
+      )}
     </View>
   );
 }
