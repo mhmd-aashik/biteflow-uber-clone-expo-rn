@@ -4,6 +4,7 @@ import { BrowseSearch } from "../../components/browse/BrowseSearch";
 import { Screen } from "../../components/ui/Screen";
 import { BrowseCategoryFilter } from "../../components/browse/BrowseCategoryFilter";
 import { BrowseResults } from "../../components/browse/BrowseResults";
+import { ScrollView } from "react-native";
 
 export default function SearchScreen() {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -11,13 +12,18 @@ export default function SearchScreen() {
 
   return (
     <Screen>
-      <BrowseHeader />
-      <BrowseSearch value={searchQuery} onChangeText={setSearchQuery} />
-      <BrowseCategoryFilter
-        selectedCategory={selectedCategory}
-        onSelectCategory={setSelectedCategory}
-      />
-      <BrowseResults selectedCategory={selectedCategory} />
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerClassName="pb-10"
+      >
+        <BrowseHeader />
+        <BrowseSearch value={searchQuery} onChangeText={setSearchQuery} />
+        <BrowseCategoryFilter
+          selectedCategory={selectedCategory}
+          onSelectCategory={setSelectedCategory}
+        />
+        <BrowseResults selectedCategory={selectedCategory} />
+      </ScrollView>
     </Screen>
   );
 }
