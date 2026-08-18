@@ -2,6 +2,9 @@ import { useLocalSearchParams } from "expo-router";
 import { View, Text } from "react-native";
 import { restaurants } from "../../data/restaurants";
 import { Screen } from "../../components/ui/Screen";
+import { RestaurantHero } from "../../components/home/RestaurantHero";
+import { RestaurantInfo } from "../../components/home/RestaurantInfo";
+import { RestaurantStats } from "../../components/home/RestaurantStats";
 
 export default function RestaurantDetailsScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -22,15 +25,9 @@ export default function RestaurantDetailsScreen() {
 
   return (
     <Screen>
-      <View className="flex-1 items-center justify-center px-5">
-        <Text className="text-2xl font-bold text-text-primary">
-          {restaurant.name}
-        </Text>
-
-        <Text className="mt-2 text-base text-text-secondary">
-          {restaurant.deliveryTime}
-        </Text>
-      </View>
+      <RestaurantHero restaurant={restaurant} />
+      <RestaurantInfo restaurant={restaurant} />
+      <RestaurantStats restaurant={restaurant} />
     </Screen>
   );
 }
