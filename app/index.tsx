@@ -4,8 +4,11 @@ import { HomeHeader } from "../components/home/HomeHeader";
 import { HomeSearch } from "../components/home/HomeSearch";
 import { CategorySection } from "../components/home/CategorySection";
 import { RestaurantSection } from "../components/home/RestaurantSection";
+import { useState } from "react";
 
 export default function HomeScreen() {
+  const [selectedCategory, setSelectedCategory] = useState("burgers");
+
   return (
     <Screen>
       <ScrollView
@@ -14,8 +17,12 @@ export default function HomeScreen() {
       >
         <HomeHeader />
         <HomeSearch />
-        <CategorySection />
-        <RestaurantSection />
+        <CategorySection
+          selectedCategory={selectedCategory}
+          onSelectCategory={setSelectedCategory}
+        />
+
+        <RestaurantSection selectedCategory={selectedCategory} />
       </ScrollView>
     </Screen>
   );

@@ -3,9 +3,12 @@ import { CategoryCard } from "./CategoryCard";
 import { categories } from "../../data/categories";
 import { useState } from "react";
 
-export function CategorySection() {
-  const [selectedCategory, setSelectedCategory] = useState("burgers");
+type Props = {
+  selectedCategory: string;
+  onSelectCategory: (slug: string) => void;
+};
 
+export function CategorySection({ selectedCategory, onSelectCategory }: Props) {
   return (
     <View className="mt-7">
       <Text className="px-5 text-xl font-bold text-text-primary">
@@ -22,7 +25,7 @@ export function CategorySection() {
             key={category.id}
             category={category}
             isSelected={selectedCategory === category.slug}
-            onPress={() => setSelectedCategory(category.slug)}
+            onPress={() => onSelectCategory(category.slug)}
           />
         ))}
       </ScrollView>
