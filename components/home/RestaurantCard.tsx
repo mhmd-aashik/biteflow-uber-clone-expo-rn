@@ -1,5 +1,6 @@
 import { Image, Pressable, Text, View } from "react-native";
 import { Restaurant } from "../../types/restaurant";
+import { router } from "expo-router";
 
 type Props = {
   restaurant: Restaurant;
@@ -7,7 +8,17 @@ type Props = {
 
 export function RestaurantCard({ restaurant }: Props) {
   return (
-    <Pressable className="overflow-hidden rounded-3xl bg-white">
+    <Pressable
+      className="overflow-hidden rounded-3xl bg-white active:opacity-90"
+      onPress={() =>
+        router.push({
+          pathname: "restaurant/[id]",
+          params: {
+            id: restaurant.id,
+          },
+        })
+      }
+    >
       <Image
         source={{ uri: restaurant.image }}
         className="h-48 w-full"
