@@ -3,6 +3,7 @@ import { CheckoutHeader } from "../components/checkout/CheckoutHeader";
 import { DeliveryAddressCard } from "../components/checkout/DeliveryAddressCard";
 import { Screen } from "../components/ui/Screen";
 import { DeliveryInstructions } from "../components/checkout/DeliveryInstructions";
+import { PaymentMethodCard } from "../components/checkout/PaymentMethodCard";
 
 export default function CheckoutScreen() {
   const [deliveryInstructions, setDeliveryInstructions] = useState("");
@@ -14,6 +15,7 @@ export default function CheckoutScreen() {
         value={deliveryInstructions}
         onChangeText={setDeliveryInstructions}
       />
+      <PaymentMethodCard />
     </Screen>
   );
 }
