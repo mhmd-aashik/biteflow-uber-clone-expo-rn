@@ -7,6 +7,7 @@ import { FoodInfo } from "../../components/food/FoodInfo";
 import { useState } from "react";
 import { QuantitySelector } from "../../components/food/QuantitySelector";
 import { AddToCartButton } from "../../components/food/AddToCartButton";
+import { useCartStore } from "../../store/cart.store";
 
 export default function FoodDetailsScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -14,6 +15,8 @@ export default function FoodDetailsScreen() {
   const [quantity, setQuantity] = useState(1);
 
   const product = products.find((item) => item.id === Number(id));
+
+  const addItem = useCartStore((state) => state.addItem);
 
   if (!product) {
     return (
@@ -45,11 +48,7 @@ export default function FoodDetailsScreen() {
         <AddToCartButton
           totalPrice={totalPrice}
           onPress={() => {
-            console.log("Add to cart", {
-              product,
-              quantity,
-              totalPrice,
-            });
+            addItem(product, quantity);
           }}
         />
       </View>
