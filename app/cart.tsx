@@ -44,7 +44,7 @@ export default function CartScreen() {
               <CartItemCard key={item.product.id} item={item} />
             ))}
 
-            <CartSummary items={items} />
+            <CartSummary total={totalPrice} />
 
             <CheckoutButton
               total={totalPrice}

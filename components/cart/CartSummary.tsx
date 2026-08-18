@@ -2,15 +2,10 @@ import { Text, View } from "react-native";
 import { CartItem } from "../../types/cart";
 
 type Props = {
-  items: CartItem[];
+  total: number;
 };
 
-export function CartSummary({ items }: Props) {
-  const subtotal = items.reduce(
-    (total, item) => total + item.product.price * item.quantity,
-    0,
-  );
-
+export function CartSummary({ total }: Props) {
   return (
     <View className="mt-6 rounded-3xl bg-white p-5">
       <Text className="text-xl font-bold text-text-primary">Order Summary</Text>
@@ -19,7 +14,7 @@ export function CartSummary({ items }: Props) {
         <Text className="text-base text-text-secondary">Subtotal</Text>
 
         <Text className="text-base font-bold text-text-primary">
-          AED {subtotal}
+          AED {total}
         </Text>
       </View>
     </View>
