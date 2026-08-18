@@ -1,10 +1,10 @@
 import { ScrollView, Text, View } from "react-native";
-import { useCartStore } from "../store/cart.store";
-import { Screen } from "../components/ui/Screen";
-import { CartItemCard } from "../components/cart/CartItemCard";
-import { CartSummary } from "../components/cart/CartSummary";
-import { CartEmptyState } from "../components/cart/CartEmptyState";
-import { CheckoutButton } from "../components/cart/CheckoutButton";
+import { useCartStore } from "../../store/cart.store";
+import { Screen } from "../../components/ui/Screen";
+import { CartItemCard } from "../../components/cart/CartItemCard";
+import { CartSummary } from "../../components/cart/CartSummary";
+import { CartEmptyState } from "../../components/cart/CartEmptyState";
+import { CheckoutButton } from "../../components/cart/CheckoutButton";
 
 export default function CartScreen() {
   const items = useCartStore((state) => state.items);
