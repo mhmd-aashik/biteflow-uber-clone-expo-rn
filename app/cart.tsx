@@ -8,6 +8,8 @@ import { CartEmptyState } from "../components/cart/CartEmptyState";
 export default function CartScreen() {
   const items = useCartStore((state) => state.items);
 
+  const totalItems = items.reduce((total, item) => total + item.quantity, 0);
+
   if (items.length === 0) {
     return (
       <Screen>
@@ -28,7 +30,7 @@ export default function CartScreen() {
           </Text>
 
           <Text className="mt-2 text-base text-text-secondary">
-            {items.length} items
+            {totalItems} {totalItems === 1 ? "item" : "items"}
           </Text>
 
           <View className="mt-6 gap-4">
