@@ -1,0 +1,31 @@
+import { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
+import { Pressable, Text, View } from "react-native";
+import { Screen } from "../components/ui/Screen";
+
+export default function OrderSuccessScreen() {
+  return (
+    <Screen>
+      <View className="flex-1 items-center justify-center px-6">
+        <View className="h-24 w-24 items-center justify-center rounded-full bg-success-500">
+          <Ionicons name="checkmark" size={48} color="#FFFFFF" />
+        </View>
+
+        <Text className="mt-7 text-3xl font-bold text-text-primary">
+          Order placed!
+        </Text>
+
+        <Text className="mt-3 text-center text-base leading-6 text-text-secondary">
+          Your order has been confirmed and is being prepared.
+        </Text>
+
+        <Pressable
+          onPress={() => router.replace("/")}
+          className="mt-8 h-14 w-full items-center justify-center rounded-2xl bg-brand-500 active:opacity-90"
+        >
+          <Text className="text-base font-bold text-white">Back to home</Text>
+        </Pressable>
+      </View>
+    </Screen>
+  );
+}
