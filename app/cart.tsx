@@ -1,6 +1,7 @@
 import { Text, View } from "react-native";
 import { useCartStore } from "../store/cart.store";
 import { Screen } from "../components/ui/Screen";
+import { CartItemCard } from "../components/cart/CartItemCard";
 
 export default function CartScreen() {
   const items = useCartStore((state) => state.items);
@@ -16,19 +17,7 @@ export default function CartScreen() {
 
         <View className="mt-6 gap-4">
           {items.map((item) => (
-            <View key={item.product.id} className="rounded-2xl bg-white p-4">
-              <Text className="text-lg font-bold text-text-primary">
-                {item.product.name}
-              </Text>
-
-              <Text className="mt-2 text-text-secondary">
-                Quantity: {item.quantity}
-              </Text>
-
-              <Text className="mt-2 font-bold text-brand-500">
-                AED {item.product.price * item.quantity}
-              </Text>
-            </View>
+            <CartItemCard key={item.product.id} item={item} />
           ))}
         </View>
       </View>
