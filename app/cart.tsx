@@ -4,11 +4,17 @@ import { Screen } from "../components/ui/Screen";
 import { CartItemCard } from "../components/cart/CartItemCard";
 import { CartSummary } from "../components/cart/CartSummary";
 import { CartEmptyState } from "../components/cart/CartEmptyState";
+import { CheckoutButton } from "../components/cart/CheckoutButton";
 
 export default function CartScreen() {
   const items = useCartStore((state) => state.items);
 
   const totalItems = items.reduce((total, item) => total + item.quantity, 0);
+
+  const totalPrice = items.reduce(
+    (total, item) => total + item.product.price * item.quantity,
+    0,
+  );
 
   if (items.length === 0) {
     return (
@@ -39,6 +45,13 @@ export default function CartScreen() {
             ))}
 
             <CartSummary items={items} />
+
+            <CheckoutButton
+              total={totalPrice}
+              onPress={() => {
+                console.log("Go to checkout");
+              }}
+            />
           </View>
         </View>
       </ScrollView>
