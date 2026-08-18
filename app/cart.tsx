@@ -2,6 +2,7 @@ import { Text, View } from "react-native";
 import { useCartStore } from "../store/cart.store";
 import { Screen } from "../components/ui/Screen";
 import { CartItemCard } from "../components/cart/CartItemCard";
+import { CartSummary } from "../components/cart/CartSummary";
 
 export default function CartScreen() {
   const items = useCartStore((state) => state.items);
@@ -19,6 +20,8 @@ export default function CartScreen() {
           {items.map((item) => (
             <CartItemCard key={item.product.id} item={item} />
           ))}
+
+          <CartSummary items={items} />
         </View>
       </View>
     </Screen>
