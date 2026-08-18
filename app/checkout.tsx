@@ -6,6 +6,7 @@ import { DeliveryInstructions } from "../components/checkout/DeliveryInstruction
 import { PaymentMethodCard } from "../components/checkout/PaymentMethodCard";
 import { useCartStore } from "../store/cart.store";
 import { CheckoutOrderSummary } from "../components/checkout/CheckoutOrderSummary";
+import { ScrollView } from "react-native";
 
 export default function CheckoutScreen() {
   const [deliveryInstructions, setDeliveryInstructions] = useState("");
@@ -20,14 +21,20 @@ export default function CheckoutScreen() {
   return (
     <Screen>
       <CheckoutHeader />
-      <DeliveryAddressCard />
-      <DeliveryInstructions
-        value={deliveryInstructions}
-        onChangeText={setDeliveryInstructions}
-      />
-      <PaymentMethodCard />
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerClassName="pb-10"
+        keyboardShouldPersistTaps="handled"
+      >
+        <DeliveryAddressCard />
+        <DeliveryInstructions
+          value={deliveryInstructions}
+          onChangeText={setDeliveryInstructions}
+        />
+        <PaymentMethodCard />
 
-      <CheckoutOrderSummary items={items} total={totalPrice} />
+        <CheckoutOrderSummary items={items} total={totalPrice} />
+      </ScrollView>
     </Screen>
   );
 }
