@@ -4,16 +4,21 @@ import { restaurants } from "../../data/restaurants";
 
 type Props = {
   selectedCategory: string;
+  searchQuery: string;
 };
 
-export function RestaurantSection({ selectedCategory }: Props) {
-  const filteredRestaurants =
-    selectedCategory === "all"
-      ? restaurants
-      : restaurants.filter(
-          (restaurant) => restaurant.categorySlug === selectedCategory,
-        );
+export function RestaurantSection({ selectedCategory, searchQuery }: Props) {
+  const filteredRestaurants = restaurants.filter((restaurant) => {
+    const matchesCategory =
+      selectedCategory === "all" ||
+      restaurant.categorySlug === selectedCategory;
 
+    const matchesSearch = restaurant.name
+      .toLowerCase()
+      .includes(searchQuery.trim().toLowerCase());
+
+    return matchesSearch && matchesCategory;
+  });
   return (
     <View className="mt-8 px-5">
       <Text className="text-xl font-bold text-text-primary">

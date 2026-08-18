@@ -8,6 +8,7 @@ import { useState } from "react";
 
 export default function HomeScreen() {
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <Screen>
@@ -16,13 +17,15 @@ export default function HomeScreen() {
         contentContainerClassName="pb-8"
       >
         <HomeHeader />
-        <HomeSearch />
+        <HomeSearch value={searchQuery} onChangeText={setSearchQuery} />
         <CategorySection
           selectedCategory={selectedCategory}
           onSelectCategory={setSelectedCategory}
         />
-
-        <RestaurantSection selectedCategory={selectedCategory} />
+        <RestaurantSection
+          selectedCategory={selectedCategory}
+          searchQuery={searchQuery}
+        />
       </ScrollView>
     </Screen>
   );
