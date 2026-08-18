@@ -1,6 +1,7 @@
 import { View } from "react-native";
 import { restaurants } from "../../data/restaurants";
 import { RestaurantCard } from "../home/RestaurantCard";
+import { BrowseEmptyState } from "./BrowseEmptyState";
 
 type Props = {
   selectedCategory: string;
@@ -13,6 +14,10 @@ export function BrowseResults({ selectedCategory }: Props) {
       : restaurants.filter(
           (restaurant) => restaurant.categorySlug === selectedCategory,
         );
+
+  if (filteredRestaurants.length === 0) {
+    return <BrowseEmptyState />;
+  }
 
   return (
     <View className="mt-6 gap-4 px-5">
