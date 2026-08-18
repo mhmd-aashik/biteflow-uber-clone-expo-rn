@@ -8,6 +8,7 @@ import { useCartStore } from "../store/cart.store";
 import { CheckoutOrderSummary } from "../components/checkout/CheckoutOrderSummary";
 import { ScrollView } from "react-native";
 import { PlaceOrderButton } from "../components/checkout/PlaceOrderButton";
+import { router } from "expo-router";
 
 export default function CheckoutScreen() {
   const [deliveryInstructions, setDeliveryInstructions] = useState("");
@@ -44,6 +45,8 @@ export default function CheckoutScreen() {
               deliveryInstructions,
               totalPrice,
             });
+
+            router.push('/order-success')
           }}
         />
       </ScrollView>
