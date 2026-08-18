@@ -3,14 +3,23 @@ import type { Category } from "../../types/category";
 
 type Props = {
   category: Category;
+  isSelected: boolean;
+  onPress: () => void;
 };
 
-export function CategoryCard({ category }: Props) {
+export function CategoryCard({ category, isSelected, onPress }: Props) {
   return (
-    <Pressable className="h-24 w-20 items-center justify-center rounded-3xl bg-white">
+    <Pressable
+      onPress={onPress}
+      className={`h-24 w-20 items-center justify-center rounded-3xl ${isSelected ? "bg-brand-500" : "bg-white"}`}
+    >
       <Text className="text-3xl">{category.emoji}</Text>
 
-      <Text className="mt-2 text-sm font-semibold text-text-primary">
+      <Text
+        className={`mt-2 text-sm font-semibold ${
+          isSelected ? "text-white" : "text-text-primary"
+        }`}
+      >
         {category.name}
       </Text>
     </Pressable>
