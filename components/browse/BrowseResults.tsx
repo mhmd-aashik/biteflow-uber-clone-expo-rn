@@ -3,6 +3,7 @@ import { restaurants } from "../../data/restaurants";
 import { RestaurantCard } from "../home/RestaurantCard";
 import { BrowseEmptyState } from "./BrowseEmptyState";
 import { products } from "../../data/products";
+import { MatchingProductLabel } from "./MatchingProductLabel";
 
 type Props = {
   selectedCategory: string;
@@ -54,12 +55,7 @@ export function BrowseResults({ selectedCategory, searchQuery }: Props) {
             <RestaurantCard restaurant={restaurant} />
 
             {searchQuery.trim() !== "" && matchingProduct && (
-              <Text className="mt-2 px-2 text-sm text-text-secondary">
-                Matches:{" "}
-                <Text className="font-semibold text-brand-500">
-                  {matchingProduct.name}
-                </Text>
-              </Text>
+              <MatchingProductLabel productName={matchingProduct.name} />
             )}
           </View>
         );
