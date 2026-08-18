@@ -8,6 +8,7 @@ type CartStore = {
   increaseQuantity: (productId: number) => void;
   decreaseQuantity: (productId: number) => void;
   removeItem: (productId: number) => void;
+  clearCart: () => void;
 };
 
 export const useCartStore = create<CartStore>((set) => ({
@@ -70,4 +71,9 @@ export const useCartStore = create<CartStore>((set) => ({
     set((state) => ({
       items: state.items.filter((item) => item.product.id !== productId),
     })),
+
+  clearCart: () =>
+    set({
+      items: [],
+    }),
 }));
