@@ -45,16 +45,14 @@ export function BrowseResults({ selectedCategory, searchQuery }: Props) {
         const matchingProduct = products.find(
           (product) =>
             product.restaurantId === restaurant.id &&
-            product.name
-              .toLowerCase()
-              .includes(searchQuery.trim().toLowerCase()),
+            product.name.toLowerCase().includes(normalizedQuery),
         );
 
         return (
           <View key={restaurant.id}>
             <RestaurantCard restaurant={restaurant} />
 
-            {searchQuery.trim() !== "" && matchingProduct && (
+            {normalizedQuery && matchingProduct && (
               <MatchingProductLabel productName={matchingProduct.name} />
             )}
           </View>
