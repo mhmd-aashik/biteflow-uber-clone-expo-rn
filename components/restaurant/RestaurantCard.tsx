@@ -2,12 +2,22 @@ import { Image, Pressable, Text, View } from "react-native";
 
 import { router } from "expo-router";
 import { Restaurant } from "../../types/restaurant";
+import { useFavoritesStore } from "../../store/favorites.store";
+import { Ionicons } from "@expo/vector-icons";
 
 type Props = {
   restaurant: Restaurant;
 };
 
 export function RestaurantCard({ restaurant }: Props) {
+  const favoriteRestaurants = useFavoritesStore((state) => state.restaurants);
+
+  const toggleRestaurant = useFavoritesStore((state) => state.toggleRestaurant);
+
+  const isFavorite = favoriteRestaurants.some(
+    (item) => item.id === restaurant.id,
+  );
+
   return (
     <Pressable
       className="overflow-hidden rounded-3xl bg-white active:opacity-90"
@@ -25,6 +35,20 @@ export function RestaurantCard({ restaurant }: Props) {
         className="h-48 w-full"
         resizeMode="cover"
       />
+
+      <Pressable
+        onPress={(event) => {
+          event.stopPropagation();
+          toggleRestaurant(restaurant);
+        }}
+        className="absolute right-3 top-3 h-10 w-10 items-center justify-center rounded-full bg-white"
+      >
+        <Ionicons
+          name={isFavorite ? "heart" : "heart-outline"}
+          size={21}
+          color={isFavorite ? "#FF5A36" : "#171717"}
+        />
+      </Pressable>
 
       <View className="p-4">
         <View className="flex-row items-center justify-between">
