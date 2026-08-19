@@ -2,6 +2,8 @@ import { Screen } from "../../components/ui/Screen";
 import { ProfileHeader } from "../../components/profile/ProfileHeader";
 import { ProfileUserCard } from "../../components/profile/ProfileUserCard";
 import { ProfileMenuItem } from "../../components/profile/ProfileMenuItem";
+import { ProfileMenuSection } from "../../components/profile/ProfileMenuSection";
+import { ProfileSupportSection } from "../../components/profile/ProfileSupportSection";
 
 export default function ProfileScreen() {
   return (
@@ -9,17 +11,8 @@ export default function ProfileScreen() {
       <ProfileHeader />
       <ProfileUserCard />
 
-      <ProfileMenuItem
-        title="Your orders"
-        subtitle="View your order history"
-        icon="receipt-outline"
-      />
-
-      <ProfileMenuItem
-        title="Addresses"
-        subtitle="Manage delivery addresses"
-        icon="location-outline"
-      />
+      <ProfileMenuSection />
+      <ProfileSupportSection />
     </Screen>
   );
 }
