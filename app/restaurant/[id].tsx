@@ -32,7 +32,7 @@ export default function RestaurantDetailsScreen() {
       >
         <RestaurantHero restaurant={restaurant} />
         <RestaurantInfo restaurant={restaurant} />
-        <RestaurantStats restaurant={restaurant} />
+        <RestaurantStats />
         <RestaurantMenu restaurantId={restaurant.id} />
       </ScrollView>
     </Screen>
