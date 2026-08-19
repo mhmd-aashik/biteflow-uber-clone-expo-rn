@@ -1,5 +1,6 @@
 import { View } from "react-native";
 import { ProfileMenuItem } from "./ProfileMenuItem";
+import { router } from "expo-router";
 
 export function ProfileMenuSection() {
   return (
@@ -24,6 +25,7 @@ export function ProfileMenuSection() {
         title="Favorites"
         subtitle="Restaurants and food you love"
         icon="heart-outline"
+        onPress={() => router.push("/favorites")}
       />
 
       <View className="mx-4 h-px bg-gray-100" />
