@@ -10,6 +10,7 @@ type Props = {
 
 export function RestaurantHero({ restaurant }: Props) {
   const restaurants = useFavoritesStore((state) => state.restaurants);
+
   const toggleRestaurant = useFavoritesStore((state) => state.toggleRestaurant);
 
   const isFavorite = restaurants.some((item) => item.id === restaurant.id);
@@ -26,6 +27,17 @@ export function RestaurantHero({ restaurant }: Props) {
         className="absolute left-5 top-5 h-11 w-11 items-center justify-center rounded-full bg-white"
       >
         <Ionicons name="arrow-back" size={22} color="#171717" />
+      </Pressable>
+
+      <Pressable
+        onPress={() => toggleRestaurant(restaurant)}
+        className="absolute right-5 top-5 h-11 w-11 items-center justify-center rounded-full bg-white active:opacity-80"
+      >
+        <Ionicons
+          name={isFavorite ? "heart" : "heart-outline"}
+          size={22}
+          color={isFavorite ? "#FF5A36" : "#171717"}
+        />
       </Pressable>
     </View>
   );
