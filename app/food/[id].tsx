@@ -38,6 +38,11 @@ export default function FoodDetailsScreen() {
     (item) => item.id === product.restaurantId,
   );
 
+  const handleAddToCart = () => {
+    addItem(product, quantity);
+    router.push("/cart");
+  };
+
   return (
     <Screen>
       <FoodHero product={product} />
@@ -53,13 +58,7 @@ export default function FoodDetailsScreen() {
           onDecrease={() => setQuantity((current) => Math.max(1, current - 1))}
         />
 
-        <AddToCartButton
-          totalPrice={totalPrice}
-          onPress={() => {
-            addItem(product, quantity);
-            router.push("/cart");
-          }}
-        />
+        <AddToCartButton totalPrice={totalPrice} onPress={handleAddToCart} />
       </View>
     </Screen>
   );
