@@ -1,44 +1,35 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Text, View } from "react-native";
-import { Restaurant } from "../../types/restaurant";
 
-type Props = {
-  restaurant: Restaurant;
-};
-
-export function RestaurantStats({ restaurant }: Props) {
+export function RestaurantStats() {
   return (
-    <View className="mt-6 flex-row gap-3 px-5">
-      <View className="flex-1 items-center rounded-2xl bg-white py-4">
-        <Ionicons name="star" size={20} color="#171717" />
+    <View className="mx-5 mt-6 flex-row rounded-2xl bg-white py-4">
+      <View className="flex-1 items-center">
+        <Ionicons name="thumbs-up-outline" size={21} color="#FF5A36" />
 
-        <Text className="mt-2 text-base font-bold text-text-primary">
-          {restaurant.rating}
-        </Text>
+        <Text className="mt-2 font-bold text-text-primary">95%</Text>
 
-        <Text className="mt-1 text-xs text-text-secondary">Rating</Text>
+        <Text className="mt-1 text-xs text-text-secondary">Reviews</Text>
       </View>
 
-      <View className="flex-1 items-center rounded-2xl bg-white py-4">
-        <Ionicons name="time-outline" size={21} color="#171717" />
+      <View className="w-px bg-gray-100" />
 
-        <Text className="mt-2 text-base font-bold text-text-primary">
-          {restaurant.deliveryTime}
-        </Text>
+      <View className="flex-1 items-center">
+        <Ionicons name="bag-handle-outline" size={21} color="#FF5A36" />
 
-        <Text className="mt-1 text-xs text-text-secondary">Delivery</Text>
+        <Text className="mt-2 font-bold text-text-primary">AED 25</Text>
+
+        <Text className="mt-1 text-xs text-text-secondary">Minimum</Text>
       </View>
 
-      <View className="flex-1 items-center rounded-2xl bg-white py-4">
-        <Ionicons name="bicycle-outline" size={21} color="#171717" />
+      <View className="w-px bg-gray-100" />
 
-        <Text className="mt-2 text-base font-bold text-text-primary">
-          {restaurant.deliveryFee === 0
-            ? "Free"
-            : `AED ${restaurant.deliveryFee}`}
-        </Text>
+      <View className="flex-1 items-center">
+        <Ionicons name="restaurant-outline" size={21} color="#FF5A36" />
 
-        <Text className="mt-1 text-xs text-text-secondary">Fee</Text>
+        <Text className="mt-2 font-bold text-text-primary">20+</Text>
+
+        <Text className="mt-1 text-xs text-text-secondary">Items</Text>
       </View>
     </View>
   );
