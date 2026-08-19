@@ -1,3 +1,4 @@
+import { Ionicons } from "@expo/vector-icons";
 import { Text, View } from "react-native";
 import { Restaurant } from "../../types/restaurant";
 
@@ -12,15 +13,33 @@ export function RestaurantInfo({ restaurant }: Props) {
         {restaurant.name}
       </Text>
 
-      <Text className="mt-2 text-base text-text-secondary">
-        {restaurant.deliveryTime}
-      </Text>
+      <View className="mt-3 flex-row flex-wrap items-center gap-x-3 gap-y-2">
+        <View className="flex-row items-center gap-1">
+          <Ionicons name="star" size={16} color="#171717" />
 
-      <Text className="mt-2 text-sm font-semibold text-success-500">
-        {restaurant.deliveryFee === 0
-          ? "Free delivery"
-          : `AED ${restaurant.deliveryFee} delivery`}
-      </Text>
+          <Text className="text-sm font-semibold text-text-primary">
+            {restaurant.rating}
+          </Text>
+        </View>
+
+        <Text className="text-sm text-text-secondary">•</Text>
+
+        <View className="flex-row items-center gap-1">
+          <Ionicons name="time-outline" size={16} color="#777777" />
+
+          <Text className="text-sm text-text-secondary">
+            {restaurant.deliveryTime}
+          </Text>
+        </View>
+
+        <Text className="text-sm text-text-secondary">•</Text>
+
+        <Text className="text-sm font-semibold text-success-500">
+          {restaurant.deliveryFee === 0
+            ? "Free delivery"
+            : `AED ${restaurant.deliveryFee} delivery`}
+        </Text>
+      </View>
     </View>
   );
 }
