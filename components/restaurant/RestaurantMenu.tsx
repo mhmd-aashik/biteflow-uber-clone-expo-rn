@@ -1,6 +1,6 @@
 import { products } from "../../data/products";
 import { Text, View } from "react-native";
-import { MenuItem } from "../home/MenuItem";
+import { MenuItem } from "./MenuItem";
 
 type Props = {
   restaurantId: number;
