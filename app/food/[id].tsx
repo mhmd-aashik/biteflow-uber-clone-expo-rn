@@ -1,5 +1,5 @@
 import { router, useLocalSearchParams } from "expo-router";
-import { Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import { Screen } from "../../components/ui/Screen";
 import { products } from "../../data/products";
 import { FoodHero } from "../../components/food/FoodHero";
@@ -45,21 +45,28 @@ export default function FoodDetailsScreen() {
 
   return (
     <Screen>
-      <FoodHero product={product} />
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerClassName="pb-10"
+      >
+        <FoodHero product={product} />
 
-      <FoodInfo product={product} />
+        <FoodInfo product={product} />
 
-      {restaurant && <FoodRestaurantInfo restaurant={restaurant} />}
+        {restaurant && <FoodRestaurantInfo restaurant={restaurant} />}
 
-      <View className="mt-8 flex-row items-center gap-4 px-5">
-        <QuantitySelector
-          quantity={quantity}
-          onIncrease={() => setQuantity((current) => current + 1)}
-          onDecrease={() => setQuantity((current) => Math.max(1, current - 1))}
-        />
+        <View className="mt-8 flex-row items-center gap-4 px-5">
+          <QuantitySelector
+            quantity={quantity}
+            onIncrease={() => setQuantity((current) => current + 1)}
+            onDecrease={() =>
+              setQuantity((current) => Math.max(1, current - 1))
+            }
+          />
 
-        <AddToCartButton totalPrice={totalPrice} onPress={handleAddToCart} />
-      </View>
+          <AddToCartButton totalPrice={totalPrice} onPress={handleAddToCart} />
+        </View>
+      </ScrollView>
     </Screen>
   );
 }
