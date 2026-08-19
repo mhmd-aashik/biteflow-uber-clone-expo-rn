@@ -6,6 +6,7 @@ type FavoritesStore = {
 
   addRestaurant: (restaurant: Restaurant) => void;
   removeRestaurant: (restaurantId: number) => void;
+  toggleRestaurant: (restaurant: Restaurant) => void;
   isRestaurantFavorite: (restaurantId: number) => boolean;
 };
 
@@ -33,6 +34,25 @@ export const useFavoritesStore = create<FavoritesStore>((set, get) => ({
         (restaurant) => restaurant.id !== restaurantId,
       ),
     })),
+
+  toggleRestaurant: (restaurant) =>
+    set((state) => {
+      const alreadyFavorite = state.restaurants.some(
+        (item) => item.id === restaurant.id,
+      );
+
+      if (alreadyFavorite) {
+        return {
+          restaurants: state.restaurants.filter(
+            (item) => item.id !== restaurant.id,
+          ),
+        };
+      }
+
+      return {
+        restaurants: [...state.restaurants, restaurant],
+      };
+    }),
 
   isRestaurantFavorite: (restaurantId) =>
     get().restaurants.some((restaurant) => restaurant.id === restaurantId),
