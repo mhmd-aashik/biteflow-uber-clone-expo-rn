@@ -24,19 +24,19 @@ export function RestaurantHero({ restaurant }: Props) {
 
       <Pressable
         onPress={() => router.back()}
-        className="absolute left-5 top-5 h-11 w-11 items-center justify-center rounded-full bg-white"
+        className="absolute left-5 top-5 h-11 w-11 items-center justify-center rounded-full bg-black/40 active:opacity-80"
       >
-        <Ionicons name="arrow-back" size={22} color="#171717" />
+        <Ionicons name="arrow-back" size={22} color="#FFFFFF" />{" "}
       </Pressable>
 
       <Pressable
         onPress={() => toggleRestaurant(restaurant)}
-        className="absolute right-5 top-5 h-11 w-11 items-center justify-center rounded-full bg-white active:opacity-80"
+        className="absolute right-5 top-5 h-11 w-11 items-center justify-center rounded-full bg-black/40 active:opacity-80"
       >
         <Ionicons
           name={isFavorite ? "heart" : "heart-outline"}
           size={22}
-          color={isFavorite ? "#FF5A36" : "#171717"}
+          color={isFavorite ? "#FF5A36" : "#FFFFFF"}
         />
       </Pressable>
     </View>
