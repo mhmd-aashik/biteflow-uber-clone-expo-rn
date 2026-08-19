@@ -1,5 +1,10 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Pressable, Text, View } from "react-native";
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+} from "react-native-reanimated";
 
 type Props = {
   totalPrice: number;
@@ -7,10 +12,25 @@ type Props = {
 };
 
 export function AddToCartButton({ totalPrice, onPress }: Props) {
+  const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
+
+  const scale = useSharedValue(1);
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: scale.value }],
+  }));
+
   return (
-    <Pressable
+    <AnimatedPressable
       onPress={onPress}
-      className="h-14 flex-1 flex-row items-center justify-between rounded-2xl bg-brand-500 px-5 active:opacity-90"
+      onPressIn={() => {
+        scale.value = withSpring(0.97);
+      }}
+      onPressOut={() => {
+        scale.value = withSpring(1);
+      }}
+      style={animatedStyle}
+      className="h-14 flex-1 flex-row items-center justify-between rounded-2xl bg-brand-500 px-5"
     >
       <View className="flex-row items-center gap-2">
         <Ionicons name="bag-handle-outline" size={20} color="#FFFFFF" />
@@ -19,6 +39,6 @@ export function AddToCartButton({ totalPrice, onPress }: Props) {
       </View>
 
       <Text className="text-base font-bold text-white">AED {totalPrice}</Text>
-    </Pressable>
+    </AnimatedPressable>
   );
 }
