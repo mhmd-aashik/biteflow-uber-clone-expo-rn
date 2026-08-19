@@ -4,15 +4,23 @@ import { ProfileUserCard } from "../../components/profile/ProfileUserCard";
 import { ProfileMenuItem } from "../../components/profile/ProfileMenuItem";
 import { ProfileMenuSection } from "../../components/profile/ProfileMenuSection";
 import { ProfileSupportSection } from "../../components/profile/ProfileSupportSection";
+import { ScrollView } from "react-native";
 
 export default function ProfileScreen() {
   return (
     <Screen>
-      <ProfileHeader />
-      <ProfileUserCard />
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerClassName="pb-10"
+      >
+        <ProfileHeader />
 
-      <ProfileMenuSection />
-      <ProfileSupportSection />
+        <ProfileUserCard />
+
+        <ProfileMenuSection />
+
+        <ProfileSupportSection />
+      </ScrollView>
     </Screen>
   );
 }
