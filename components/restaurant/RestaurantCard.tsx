@@ -1,6 +1,7 @@
 import { Image, Pressable, Text, View } from "react-native";
-import { Restaurant } from "../../types/restaurant";
+
 import { router } from "expo-router";
+import { Restaurant } from "../../types/restaurant";
 
 type Props = {
   restaurant: Restaurant;

@@ -1,9 +1,9 @@
 import { Text, View } from "react-native";
 import { restaurants } from "../../data/restaurants";
-import { RestaurantCard } from "../home/RestaurantCard";
 import { BrowseEmptyState } from "./BrowseEmptyState";
 import { products } from "../../data/products";
 import { MatchingProductLabel } from "./MatchingProductLabel";
+import { RestaurantCard } from "../restaurant/RestaurantCard";
 
 type Props = {
   selectedCategory: string;
