@@ -9,30 +9,30 @@ type Props = {
 
 export function QuantitySelector({ quantity, onIncrease, onDecrease }: Props) {
   return (
-    <View className="flex-row items-center gap-5">
+    <View className="flex-row items-center rounded-2xl bg-white p-2">
       <Pressable
         onPress={onDecrease}
         disabled={quantity === 1}
-        className={`h-11 w-11 items-center justify-center rounded-full ${
-          quantity === 1 ? "bg-gray-100" : "bg-white"
+        className={`h-10 w-10 items-center justify-center rounded-xl ${
+          quantity === 1 ? "bg-gray-100" : "bg-brand-50 active:opacity-80"
         }`}
       >
         <Ionicons
           name="remove"
-          size={22}
-          color={quantity === 1 ? "#9A9A9A" : "#171717"}
+          size={20}
+          color={quantity === 1 ? "#9A9A9A" : "#FF5A36"}
         />
       </Pressable>
 
-      <Text className="min-w-6 text-center text-lg font-bold text-text-primary">
+      <Text className="min-w-12 text-center text-lg font-bold text-text-primary">
         {quantity}
       </Text>
 
       <Pressable
         onPress={onIncrease}
-        className="h-11 w-11 items-center justify-center rounded-full bg-white active:opacity-80"
+        className="h-10 w-10 items-center justify-center rounded-xl bg-brand-50 active:opacity-80"
       >
-        <Ionicons name="add" size={22} color="#171717" />
+        <Ionicons name="add" size={20} color="#FF5A36" />
       </Pressable>
     </View>
   );
