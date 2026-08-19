@@ -15,6 +15,7 @@ export default function FoodDetailsScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
 
   const [quantity, setQuantity] = useState(1);
+  const [addedToCart, setAddedToCart] = useState(false);
 
   const product = products.find((item) => item.id === Number(id));
 
@@ -40,7 +41,13 @@ export default function FoodDetailsScreen() {
 
   const handleAddToCart = () => {
     addItem(product, quantity);
+
+    setAddedToCart(true);
     setQuantity(1);
+
+    setTimeout(() => {
+      setAddedToCart(false);
+    }, 2000);
   };
 
   return (
@@ -54,6 +61,14 @@ export default function FoodDetailsScreen() {
         <FoodInfo product={product} />
 
         {restaurant && <FoodRestaurantInfo restaurant={restaurant} />}
+
+        {addedToCart && (
+          <View className="mx-5 mt-6 flex-row items-center justify-center rounded-2xl bg-green-50 px-4 py-3">
+            <Text className="font-semibold text-green-700">
+              ✓ Added to cart
+            </Text>
+          </View>
+        )}
 
         <View className="mt-8 flex-row items-center gap-4 px-5">
           <QuantitySelector
