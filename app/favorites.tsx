@@ -5,6 +5,7 @@ import { useFavoritesStore } from "../store/favorites.store";
 import { Screen } from "../components/ui/Screen";
 import { RestaurantCard } from "../components/restaurant/RestaurantCard";
 import { FavoritesEmptyState } from "../components/favorites/FavoritesEmptyState";
+import { FavoritesHeader } from "../components/favorites/FavoritesHeader";
 
 export default function FavoritesScreen() {
   const restaurants = useFavoritesStore((state) => state.restaurants);
@@ -12,19 +13,7 @@ export default function FavoritesScreen() {
   if (restaurants.length === 0) {
     return (
       <Screen>
-        <View className="h-16 flex-row items-center px-5">
-          <Pressable
-            onPress={() => router.back()}
-            className="h-11 w-11 items-center justify-center rounded-full bg-white"
-          >
-            <Ionicons name="arrow-back" size={22} color="#171717" />
-          </Pressable>
-
-          <Text className="ml-4 text-2xl font-bold text-text-primary">
-            Favorites
-          </Text>
-        </View>
-
+        <FavoritesHeader />
         <FavoritesEmptyState />
       </Screen>
     );
@@ -32,18 +21,7 @@ export default function FavoritesScreen() {
 
   return (
     <Screen>
-      <View className="h-16 flex-row items-center px-5">
-        <Pressable
-          onPress={() => router.back()}
-          className="h-11 w-11 items-center justify-center rounded-full bg-white active:opacity-80"
-        >
-          <Ionicons name="arrow-back" size={22} color="#171717" />
-        </Pressable>
-
-        <Text className="ml-4 text-2xl font-bold text-text-primary">
-          Favorites
-        </Text>
-      </View>
+      <FavoritesHeader />
 
       <ScrollView
         showsVerticalScrollIndicator={false}
