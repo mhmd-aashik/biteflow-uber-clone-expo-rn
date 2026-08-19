@@ -2,6 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { Pressable, Text, View } from "react-native";
 import { OrderSuccessDetails } from "./OrderSuccessDetails";
+import { BackToHomeButton } from "./BackToHomeButton";
 
 export function OrderSuccessContent() {
   return (
@@ -20,12 +21,7 @@ export function OrderSuccessContent() {
 
       <OrderSuccessDetails />
 
-      <Pressable
-        onPress={() => router.replace("/")}
-        className="mt-8 h-14 w-full items-center justify-center rounded-2xl bg-brand-500 active:opacity-90"
-      >
-        <Text className="text-base font-bold text-white">Back to home</Text>
-      </Pressable>
+      <BackToHomeButton />
     </View>
   );
 }
