@@ -1,8 +1,11 @@
 import { View } from "react-native";
 import { ProfileMenuItem } from "./ProfileMenuItem";
 import { router } from "expo-router";
+import { useFavoritesStore } from "../../store/favorites.store";
 
 export function ProfileMenuSection() {
+  const favoriteRestaurants = useFavoritesStore((state) => state.restaurants);
+
   return (
     <View className="mx-5 mt-6 overflow-hidden rounded-3xl bg-white">
       <ProfileMenuItem
@@ -25,6 +28,7 @@ export function ProfileMenuSection() {
         title="Favorites"
         subtitle="Restaurants and food you love"
         icon="heart-outline"
+        badge={favoriteRestaurants.length}
         onPress={() => router.push("/favorites")}
       />
 
