@@ -8,6 +8,8 @@ import { useState } from "react";
 import { QuantitySelector } from "../../components/food/QuantitySelector";
 import { AddToCartButton } from "../../components/food/AddToCartButton";
 import { useCartStore } from "../../store/cart.store";
+import { FoodRestaurantInfo } from "../../components/food/FoodRestaurantInfo";
+import { restaurants } from "../../data/restaurants";
 
 export default function FoodDetailsScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -32,11 +34,17 @@ export default function FoodDetailsScreen() {
 
   const totalPrice = product.price * quantity;
 
+  const restaurant = restaurants.find(
+    (item) => item.id === product.restaurantId,
+  );
+
   return (
     <Screen>
       <FoodHero product={product} />
 
       <FoodInfo product={product} />
+
+      {restaurant && <FoodRestaurantInfo restaurant={restaurant} />}
 
       <View className="mt-8 flex-row items-center gap-4 px-5">
         <QuantitySelector
